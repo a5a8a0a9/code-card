@@ -62,8 +62,8 @@ export class PreviewComponent {
 		this.isDragging.set(true);
 		this.cardService.stopAutoRotate();
 
-		// Capture the pointer so that we keep receiving events even if outside the element
-		(event.target as HTMLElement).setPointerCapture(event.pointerId);
+		// Capture the pointer on the container (currentTarget) to ensure we track events
+		(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
 
 		this.dragStart = { x: event.clientX, y: event.clientY };
 		this.lastRotation = { ...this.cardService.rotation() };
@@ -71,7 +71,7 @@ export class PreviewComponent {
 
 	onPointerUp(event: PointerEvent) {
 		this.isDragging.set(false);
-		(event.target as HTMLElement).releasePointerCapture(event.pointerId);
+		(event.currentTarget as HTMLElement).releasePointerCapture(event.pointerId);
 	}
 
 	onPointerMove(event: PointerEvent) {
