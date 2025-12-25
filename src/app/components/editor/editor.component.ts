@@ -22,8 +22,7 @@ export class EditorComponent implements OnInit {
 		name: new FormControl(this.cardService.initialProfile.name),
 		title: new FormControl(this.cardService.initialProfile.title),
 		email: new FormControl(this.cardService.initialProfile.email),
-		website: new FormControl(this.cardService.initialProfile.website),
-		github: new FormControl(this.cardService.initialProfile.github),
+		phone: new FormControl(this.cardService.initialProfile.phone),
 		skills: new FormControl(this.cardService.initialProfile.skills),
 	});
 

@@ -4,8 +4,7 @@ export interface CardProfile {
 	name: string;
 	title: string;
 	email: string;
-	website: string;
-	github: string;
+	phone: string;
 	skills: string; // Comma separated string
 }
 
@@ -18,8 +17,7 @@ export class CardService {
 		name: 'Alex Chen',
 		title: 'Frontend Engineer',
 		email: 'alex@example.com',
-		website: 'alex.dev',
-		github: 'alexcode',
+		phone: '0912345678',
 		skills: 'Angular, Tailwind, Three.js',
 	};
 

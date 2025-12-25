@@ -14,7 +14,7 @@
 			style="
 				background-image: linear-gradient(#334155 1px, transparent 1px),
 					linear-gradient(90deg, #334155 1px, transparent 1px);
-				background-size: 25px 25px;
+				background-size: 16px 16px;
 			"
 		></div>
 
@@ -84,35 +84,28 @@
 									><span class="text-slate-400">,</span>
 								</div>
 
-								<!-- Contact Block -->
 								<div class="whitespace-nowrap">
+									<span class="text-sky-300">"email"</span>:
+									<span class="text-orange-300"
+										>"{{ cardService.profile().email }}"</span
+									><span class="text-slate-400">,</span>
+								</div>
+								<div class="whitespace-nowrap">
+									<span class="text-sky-300">"phone"</span>:
+									<span class="text-orange-300"
+										>"{{ cardService.profile().phone }}"</span
+									><span class="text-slate-400">,</span>
+								</div>
+
+								<!-- <div class="whitespace-nowrap">
 									<span class="text-sky-300">"contact"</span>:
 									<span class="text-yellow-400">{{ "{" }}</span>
 								</div>
-								<div class="pl-4 flex flex-col items-start w-full">
-									<div class="whitespace-nowrap">
-										<span class="text-sky-300">"email"</span>:
-										<span class="text-orange-300"
-											>"{{ cardService.profile().email }}"</span
-										><span class="text-slate-400">,</span>
-									</div>
-									<div class="whitespace-nowrap">
-										<span class="text-sky-300">"web"</span>:
-										<span class="text-orange-300"
-											>"{{ cardService.profile().website }}"</span
-										><span class="text-slate-400">,</span>
-									</div>
-									<div class="whitespace-nowrap">
-										<span class="text-sky-300">"github"</span>:
-										<span class="text-orange-300"
-											>"{{ cardService.profile().github }}"</span
-										>
-									</div>
-								</div>
+								<div class="pl-4 flex flex-col items-start w-full"></div>
 								<div class="whitespace-nowrap">
 									<span class="text-yellow-400">{{ "}" }}</span
 									><span class="text-slate-400">,</span>
-								</div>
+								</div> -->
 
 								<!-- Skills Block -->
 								<div class="whitespace-nowrap">
