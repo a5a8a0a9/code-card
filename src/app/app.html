@@ -170,7 +170,9 @@
 					<div
 						class="absolute left-0 top-4 bottom-0 w-8 text-right pr-2 text-slate-600 select-none text-xs leading-relaxed"
 					>
-						<div *ngFor="let i of lineNumbers">{{ i }}</div>
+						@for (i of lineNumbers; track i) {
+						<div>{{ i }}</div>
+						}
 					</div>
 
 					<!-- 程式碼內容 -->
@@ -211,14 +213,14 @@
 							<span class="text-sky-300">"skills"</span>:
 							<span class="text-purple-400">[</span>
 							<div class="pl-4 flex flex-wrap gap-1">
-								<ng-container
-									*ngFor="let skill of skillList(); let last = last"
-								>
-									<span>
-										<span class="text-orange-300">"{{ skill }}"</span
-										><span *ngIf="!last" class="text-slate-400">,</span>
-									</span>
-								</ng-container>
+								@for (skill of skillList(); track skill; let last = $last) {
+								<span>
+									<span class="text-orange-300">"{{ skill }}"</span>@if (!last)
+									{
+									<span class="text-slate-400">,</span>
+									}
+								</span>
+								}
 							</div>
 							<span class="text-purple-400">]</span
 							><span class="text-slate-400">,</span><br />
