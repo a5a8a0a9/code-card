@@ -1,0 +1,17 @@
+.perspective-container {
+	perspective: 1000px;
+}
+
+.card-3d {
+	transform-style: preserve-3d;
+	will-change: transform;
+}
+
+.backface-hidden {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+	transform: rotateY(180deg);
+}

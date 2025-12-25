@@ -1,0 +1,111 @@
+<div
+	class="h-full w-full p-6 bg-slate-800/50 backdrop-blur-md border-b lg:border-b-0 lg:border-r border-slate-700 overflow-y-auto z-10 shadow-2xl"
+>
+	<h1
+		class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+	>
+		DevCard
+		<span
+			class="text-xs font-mono text-slate-400 border border-slate-600 rounded px-1"
+			>v1.0</span
+		>
+	</h1>
+
+	<p class="text-sm text-slate-400 mb-6">
+		輸入您的資訊，右側卡片將即時更新。拖曳卡片可旋轉檢視背面的金屬質感設計。
+	</p>
+
+	<form [formGroup]="cardForm" class="space-y-4">
+		<!-- 基本資訊 -->
+		<div class="space-y-2">
+			<label class="text-xs uppercase tracking-wider text-slate-500 font-bold"
+				>Identity</label
+			>
+			<input
+				formControlName="name"
+				type="text"
+				placeholder="你的名字 (Name)"
+				class="w-full bg-slate-900/50 border border-slate-600 rounded px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm"
+			/>
+
+			<input
+				formControlName="title"
+				type="text"
+				placeholder="職稱 (Job Title)"
+				class="w-full bg-slate-900/50 border border-slate-600 rounded px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm"
+			/>
+		</div>
+
+		<!-- 聯絡資訊 -->
+		<div class="space-y-2 pt-2">
+			<label class="text-xs uppercase tracking-wider text-slate-500 font-bold"
+				>Contact</label
+			>
+			<input
+				formControlName="email"
+				type="email"
+				placeholder="Email"
+				class="w-full bg-slate-900/50 border border-slate-600 rounded px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm"
+			/>
+
+			<input
+				formControlName="website"
+				type="text"
+				placeholder="個人網站 (Website)"
+				class="w-full bg-slate-900/50 border border-slate-600 rounded px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm"
+			/>
+
+			<input
+				formControlName="github"
+				type="text"
+				placeholder="GitHub ID"
+				class="w-full bg-slate-900/50 border border-slate-600 rounded px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm"
+			/>
+		</div>
+
+		<!-- 技能標籤 (以逗號分隔) -->
+		<div class="space-y-2 pt-2">
+			<label class="text-xs uppercase tracking-wider text-slate-500 font-bold"
+				>Skills</label
+			>
+			<input
+				formControlName="skills"
+				type="text"
+				placeholder="技能 (Angular, Tailwind...)"
+				class="w-full bg-slate-900/50 border border-slate-600 rounded px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm"
+			/>
+			<p class="text-xs text-slate-500">* 請以逗號分隔</p>
+		</div>
+
+		<!-- 操作按鈕 -->
+		<div class="pt-6 flex gap-3">
+			<button
+				type="button"
+				(click)="cardService.resetRotation()"
+				class="flex-1 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium py-2 px-4 rounded transition-colors flex items-center justify-center gap-2"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12" />
+				</svg>
+				重置視角
+			</button>
+			<button
+				type="button"
+				(click)="cardService.toggleAutoRotate()"
+				class="flex-1 border border-slate-600 hover:bg-slate-800 text-slate-300 text-sm font-medium py-2 px-4 rounded transition-colors"
+			>
+				{{ cardService.isAutoRotating() ? "停止旋轉" : "自動旋轉" }}
+			</button>
+		</div>
+	</form>
+</div>
