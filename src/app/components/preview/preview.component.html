@@ -270,67 +270,26 @@
 		<button
 			type="button"
 			(click)="cardService.resetRotation()"
-			class="w-12 h-12 bg-slate-800/80 hover:bg-slate-700 text-slate-200 rounded-full shadow-lg backdrop-blur-sm border border-slate-600/50 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+			class="w-12 h-12 bg-slate-800/80 hover:bg-slate-700 text-slate-200 rounded-full shadow-lg backdrop-blur-sm border border-slate-600/50 flex items-center justify-center transition-all hover:scale-105 active:scale-95 text-lg"
 			title="重置視角"
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="20"
-				height="20"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12" />
-			</svg>
+			<fa-icon [icon]="faRotateRight"></fa-icon>
 		</button>
 
 		<!-- Auto Rotate -->
 		<button
 			type="button"
 			(click)="cardService.toggleAutoRotate()"
-			class="w-12 h-12 bg-slate-800/80 hover:bg-slate-700 text-slate-200 rounded-full shadow-lg backdrop-blur-sm border border-slate-600/50 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+			class="w-12 h-12 bg-slate-800/80 hover:bg-slate-700 text-slate-200 rounded-full shadow-lg backdrop-blur-sm border border-slate-600/50 flex items-center justify-center transition-all hover:scale-105 active:scale-95 text-lg"
 			[title]="cardService.isAutoRotating() ? '停止旋轉' : '自動旋轉'"
 			[class.text-cyan-400]="cardService.isAutoRotating()"
 		>
 			@if (cardService.isAutoRotating()) {
 			<!-- Pause / Stop Icon -->
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="20"
-				height="20"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<rect x="6" y="4" width="4" height="16" />
-				<rect x="14" y="4" width="4" height="16" />
-			</svg>
+			<fa-icon [icon]="faPause"></fa-icon>
 			} @else {
 			<!-- Play / Rotate Icon -->
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="20"
-				height="20"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<path
-					d="M21.168 8A10.003 10.003 0 0 0 12 2C6.477 2 2 6.477 2 12c0 2.22.76 4.269 2.036 5.922"
-				/>
-				<path d="M22 12c0 5.523-4.477 10-10 10" />
-				<path d="M21 8v4h-4" />
-			</svg>
+			<fa-icon [icon]="faPlay" class="pl-1"></fa-icon>
 			}
 		</button>
 
@@ -338,23 +297,10 @@
 		<button
 			type="button"
 			(click)="cardService.setEditingMode(true)"
-			class="w-14 h-14 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 lg:hidden"
+			class="w-14 h-14 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 lg:hidden text-xl"
 			title="編輯名片"
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<path d="M12 20h9" />
-				<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-			</svg>
+			<fa-icon [icon]="faPen"></fa-icon>
 		</button>
 	</div>
 </div>

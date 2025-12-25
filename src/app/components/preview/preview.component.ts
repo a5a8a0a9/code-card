@@ -1,15 +1,28 @@
 import { Component, inject, signal } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+	faPause,
+	faPen,
+	faPlay,
+	faRotateRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { CardService } from '../../services/card.service';
 
 @Component({
 	selector: 'yo-preview',
 	standalone: true,
-	imports: [], // Signals are part of core
+	imports: [FontAwesomeModule], // Signals are part of core
 	templateUrl: './preview.component.html',
 	styleUrl: './preview.component.scss',
 })
 export class PreviewComponent {
 	cardService = inject(CardService);
+
+	// Icons
+	faRotateRight = faRotateRight;
+	faPlay = faPlay;
+	faPause = faPause;
+	faPen = faPen;
 
 	lineNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 	scale = signal(1);
