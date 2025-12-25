@@ -1,11 +1,10 @@
 <div
 	class="h-full w-full relative perspective-container flex items-center justify-center bg-slate-950 overflow-hidden"
-	(mousedown)="startDrag($event)"
-	(touchstart)="startDrag($event)"
-	(window:mouseup)="stopDrag()"
-	(window:touchend)="stopDrag()"
-	(window:mousemove)="onDrag($event)"
-	(window:touchmove)="onDrag($event)"
+	style="touch-action: none"
+	(pointerdown)="onPointerDown($event)"
+	(pointermove)="onPointerMove($event)"
+	(pointerup)="onPointerUp($event)"
+	(pointercancel)="onPointerUp($event)"
 >
 	<!-- 背景裝飾網格 -->
 	<div

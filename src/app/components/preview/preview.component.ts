@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CardService } from '../../services/card.service';
 
 @Component({
@@ -45,44 +45,29 @@ export class PreviewComponent {
 		return `rotateX(${r.x}deg) rotateY(${r.y}deg)`;
 	}
 
-	startDrag(event: MouseEvent | TouchEvent) {
+	onPointerDown(event: PointerEvent) {
 		this.isDragging.set(true);
-		// Stop auto-rotate if user interacts
 		this.cardService.stopAutoRotate();
 
-		const clientX =
-			event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-		const clientY =
-			event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
+		// Capture the pointer so that we keep receiving events even if outside the element
+		(event.target as HTMLElement).setPointerCapture(event.pointerId);
 
-		this.dragStart = { x: clientX, y: clientY };
+		this.dragStart = { x: event.clientX, y: event.clientY };
 		this.lastRotation = { ...this.cardService.rotation() };
 	}
 
-	stopDrag() {
+	onPointerUp(event: PointerEvent) {
 		this.isDragging.set(false);
+		(event.target as HTMLElement).releasePointerCapture(event.pointerId);
 	}
 
-	@HostListener('window:resize')
-	onResize() {
-		this.calculateScale();
-	}
-
-	onDrag(event: MouseEvent | TouchEvent) {
+	onPointerMove(event: PointerEvent) {
 		if (!this.isDragging()) return;
 
-		if (event instanceof TouchEvent) {
-			// event.preventDefault();
-		}
+		const deltaX = event.clientX - this.dragStart.x;
+		const deltaY = event.clientY - this.dragStart.y;
 
-		const clientX =
-			event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-		const clientY =
-			event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
-
-		const deltaX = clientX - this.dragStart.x;
-		const deltaY = clientY - this.dragStart.y;
-
+		// Reduced sensitivity (divide by 3)
 		const newY = this.lastRotation.y + deltaX / 3;
 		const newX = this.lastRotation.x - deltaY / 3;
 
