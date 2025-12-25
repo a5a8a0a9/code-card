@@ -24,6 +24,7 @@ export class EditorComponent implements OnInit {
 		email: new FormControl(this.cardService.initialProfile.email),
 		phone: new FormControl(this.cardService.initialProfile.phone),
 		skills: new FormControl(this.cardService.initialProfile.skills),
+		status: new FormControl(this.cardService.initialProfile.status),
 	});
 
 	ngOnInit() {

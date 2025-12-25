@@ -24,7 +24,7 @@ export class PreviewComponent {
 	faPause = faPause;
 	faPen = faPen;
 
-	lineNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+	lineNumbers = Array.from({ length: 20 }, (_, i) => i + 1);
 	scale = signal(1);
 
 	constructor() {

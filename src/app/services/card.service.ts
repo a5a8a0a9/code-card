@@ -5,7 +5,8 @@ export interface CardProfile {
 	title: string;
 	email: string;
 	phone: string;
-	skills: string; // Comma separated string
+	skills: string;
+	status: string;
 }
 
 @Injectable({
@@ -19,6 +20,7 @@ export class CardService {
 		email: 'alex@example.com',
 		phone: '0912345678',
 		skills: 'Angular, Tailwind, Three.js',
+		status: 'Open to work',
 	};
 
 	// --- Data State ---
