@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { CardService } from '../../services/card.service';
 
 @Component({
@@ -12,6 +12,28 @@ export class PreviewComponent {
 	cardService = inject(CardService);
 
 	lineNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+	scale = signal(1);
+
+	constructor() {
+		this.calculateScale();
+	}
+
+	calculateScale() {
+		// Only scale on mobile (< 1024px)
+		if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+			const width = window.innerWidth;
+			// Base width is 320px + some padding (e.g. 40px)
+			const targetWidth = 360;
+			// If screen is smaller than target, scale down
+			if (width < targetWidth) {
+				this.scale.set(width / targetWidth);
+			} else {
+				this.scale.set(1);
+			}
+		} else {
+			this.scale.set(1);
+		}
+	}
 
 	// Local state for dragging logic
 	dragStart = { x: 0, y: 0 };
@@ -39,6 +61,11 @@ export class PreviewComponent {
 
 	stopDrag() {
 		this.isDragging.set(false);
+	}
+
+	@HostListener('window:resize')
+	onResize() {
+		this.calculateScale();
 	}
 
 	onDrag(event: MouseEvent | TouchEvent) {

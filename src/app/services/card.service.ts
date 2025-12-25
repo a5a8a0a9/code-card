@@ -35,6 +35,9 @@ export class CardService {
 
 	private isAutoRotatingSignal = signal(false);
 	readonly isAutoRotating = this.isAutoRotatingSignal.asReadonly();
+	// UI Mode State
+	private readonly isEditingSignal = signal(false);
+	readonly isEditing = this.isEditingSignal.asReadonly();
 
 	// Auto rotation interval reference
 	private autoRotateInterval: any;
@@ -87,6 +90,14 @@ export class CardService {
 
 	toggleAutoRotate() {
 		this.isAutoRotatingSignal.update((v) => !v);
+	}
+
+	toggleEditingMode() {
+		this.isEditingSignal.update((v) => !v);
+	}
+
+	setEditingMode(isEditing: boolean) {
+		this.isEditingSignal.set(isEditing);
 	}
 
 	stopAutoRotate() {

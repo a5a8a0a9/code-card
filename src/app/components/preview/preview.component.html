@@ -17,206 +17,213 @@
 		"
 	></div>
 
-	<!-- 3D 卡片本體 -->
+	<!-- 縮放容器 -->
 	<div
-		class="card-3d relative w-[320px] h-[480px] sm:w-[380px] sm:h-[560px] transition-transform duration-100 ease-linear cursor-grab active:cursor-grabbing select-none z-20"
-		[style.transform]="getCardTransform()"
+		class="relative transition-transform duration-300 ease-out"
+		[style.transform]="'scale(' + scale() + ')'"
 	>
-		<!-- 正面：IDE JSON 介面 -->
+		<!-- 3D 卡片本體 -->
 		<div
-			class="absolute inset-0 backface-hidden bg-[#1e1e1e] rounded-xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col"
+			class="card-3d relative w-[320px] h-[480px] sm:w-[380px] sm:h-[560px] transition-transform duration-100 ease-linear cursor-grab active:cursor-grabbing select-none z-20"
+			[style.transform]="getCardTransform()"
 		>
-			<!-- IDE Header -->
+			<!-- 正面：IDE JSON 介面 -->
 			<div
-				class="h-9 bg-[#252526] flex items-center px-3 border-b border-[#111] space-x-2"
+				class="absolute inset-0 backface-hidden bg-[#1e1e1e] rounded-xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col"
 			>
-				<div class="flex space-x-1.5">
-					<div class="w-3 h-3 rounded-full bg-red-500"></div>
-					<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-					<div class="w-3 h-3 rounded-full bg-green-500"></div>
-				</div>
+				<!-- IDE Header -->
 				<div
-					class="ml-4 flex items-center bg-[#1e1e1e] px-3 py-1 rounded-t text-xs text-slate-300 border-t border-blue-500"
+					class="h-9 bg-[#252526] flex items-center px-3 border-b border-[#111] space-x-2"
 				>
-					<span class="text-blue-400 mr-1.5">{{ "{}" }}</span>
-					profile.json
-					<span class="ml-2 hover:text-white cursor-pointer">×</span>
+					<div class="flex space-x-1.5">
+						<div class="w-3 h-3 rounded-full bg-red-500"></div>
+						<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+						<div class="w-3 h-3 rounded-full bg-green-500"></div>
+					</div>
+					<div
+						class="ml-4 flex items-center bg-[#1e1e1e] px-3 py-1 rounded-t text-xs text-slate-300 border-t border-blue-500"
+					>
+						<span class="text-blue-400 mr-1.5">{{ "{}" }}</span>
+						profile.json
+						<span class="ml-2 hover:text-white cursor-pointer">×</span>
+					</div>
 				</div>
-			</div>
 
-			<!-- IDE Body (Code Area) -->
-			<div
-				class="flex-1 p-4 font-mono text-sm leading-relaxed overflow-hidden relative"
-			>
-				<!-- 行號 -->
+				<!-- IDE Body (Code Area) -->
 				<div
-					class="absolute left-0 top-4 bottom-0 w-8 text-right pr-2 text-slate-600 select-none text-xs leading-relaxed"
+					class="flex-1 p-4 font-mono text-sm leading-relaxed overflow-hidden relative"
 				>
-					@for (i of lineNumbers; track i) {
-					<div>{{ i }}</div>
-					}
-				</div>
+					<!-- 行號 -->
+					<div
+						class="absolute left-0 top-4 bottom-0 w-8 text-right pr-2 text-slate-600 select-none text-xs leading-relaxed"
+					>
+						@for (i of lineNumbers; track i) {
+						<div>{{ i }}</div>
+						}
+					</div>
 
-				<!-- 程式碼內容 -->
-				<div class="pl-8 h-full">
-					<span class="text-yellow-400">{{ "{" }}</span
-					><br />
+					<!-- 程式碼內容 -->
+					<div class="pl-8 h-full">
+						<span class="text-yellow-400">{{ "{" }}</span
+						><br />
 
-					<div class="pl-4">
-						<span class="text-sky-300">"name"</span>:
-						<span class="text-orange-300"
-							>"{{ cardService.profile().name || "User" }}"</span
-						><span class="text-slate-400">,</span><br />
-
-						<span class="text-sky-300">"title"</span>:
-						<span class="text-orange-300"
-							>"{{ cardService.profile().title || "Developer" }}"</span
-						><span class="text-slate-400">,</span><br />
-
-						<span class="text-sky-300">"contact"</span>:
-						<span class="text-yellow-400">{{ "{" }}</span>
 						<div class="pl-4">
-							<span class="text-sky-300">"email"</span>:
+							<span class="text-sky-300">"name"</span>:
 							<span class="text-orange-300"
-								>"{{ cardService.profile().email }}"</span
+								>"{{ cardService.profile().name || "User" }}"</span
 							><span class="text-slate-400">,</span><br />
-							<span class="text-sky-300">"web"</span>:
+
+							<span class="text-sky-300">"title"</span>:
 							<span class="text-orange-300"
-								>"{{ cardService.profile().website }}"</span
+								>"{{ cardService.profile().title || "Developer" }}"</span
 							><span class="text-slate-400">,</span><br />
-							<span class="text-sky-300">"github"</span>:
-							<span class="text-orange-300"
-								>"{{ cardService.profile().github }}"</span
+
+							<span class="text-sky-300">"contact"</span>:
+							<span class="text-yellow-400">{{ "{" }}</span>
+							<div class="pl-4">
+								<span class="text-sky-300">"email"</span>:
+								<span class="text-orange-300"
+									>"{{ cardService.profile().email }}"</span
+								><span class="text-slate-400">,</span><br />
+								<span class="text-sky-300">"web"</span>:
+								<span class="text-orange-300"
+									>"{{ cardService.profile().website }}"</span
+								><span class="text-slate-400">,</span><br />
+								<span class="text-sky-300">"github"</span>:
+								<span class="text-orange-300"
+									>"{{ cardService.profile().github }}"</span
+								>
+							</div>
+							<span class="text-yellow-400">{{ "}" }}</span
+							><span class="text-slate-400">,</span><br />
+
+							<span class="text-sky-300">"skills"</span>:
+							<span class="text-purple-400">[</span>
+							<div class="pl-4 flex flex-wrap gap-1">
+								@for (skill of cardService.skillList(); track skill; let last =
+								$last) {
+								<span>
+									<span class="text-orange-300">"{{ skill }}"</span>@if (!last)
+									{
+									<span class="text-slate-400">,</span>
+									}
+								</span>
+								}
+							</div>
+							<span class="text-purple-400">]</span
+							><span class="text-slate-400">,</span><br />
+
+							<span class="text-sky-300">"status"</span>:
+							<span class="text-blue-400">"Open to work"</span><br />
+
+							<span class="text-green-600/80 italic text-xs"
+								>// TODO: Make something awesome</span
 							>
 						</div>
-						<span class="text-yellow-400">{{ "}" }}</span
-						><span class="text-slate-400">,</span><br />
 
-						<span class="text-sky-300">"skills"</span>:
-						<span class="text-purple-400">[</span>
-						<div class="pl-4 flex flex-wrap gap-1">
-							@for (skill of cardService.skillList(); track skill; let last =
-							$last) {
-							<span>
-								<span class="text-orange-300">"{{ skill }}"</span>@if (!last) {
-								<span class="text-slate-400">,</span>
-								}
-							</span>
-							}
-						</div>
-						<span class="text-purple-400">]</span
-						><span class="text-slate-400">,</span><br />
-
-						<span class="text-sky-300">"status"</span>:
-						<span class="text-blue-400">"Open to work"</span><br />
-
-						<span class="text-green-600/80 italic text-xs"
-							>// TODO: Make something awesome</span
-						>
+						<span class="text-yellow-400">{{ "}" }}</span>
+						<span
+							class="animate-pulse inline-block w-2 h-4 ml-1 bg-slate-400 align-middle"
+						></span>
 					</div>
+				</div>
 
-					<span class="text-yellow-400">{{ "}" }}</span>
-					<span
-						class="animate-pulse inline-block w-2 h-4 ml-1 bg-slate-400 align-middle"
-					></span>
+				<!-- IDE Footer -->
+				<div
+					class="h-6 bg-[#007acc] text-white text-[10px] flex items-center px-2 justify-between"
+				>
+					<div class="flex items-center gap-3">
+						<span>master*</span>
+						<span>&#x2297; 0 &#x26A0; 0</span>
+					</div>
+					<div class="flex items-center gap-3">
+						<span>Ln 14, Col 2</span>
+						<span>UTF-8</span>
+						<span>JSON</span>
+					</div>
 				</div>
 			</div>
 
-			<!-- IDE Footer -->
+			<!-- 背面：金屬質感設計 -->
 			<div
-				class="h-6 bg-[#007acc] text-white text-[10px] flex items-center px-2 justify-between"
+				class="absolute inset-0 backface-hidden rotate-y-180 rounded-xl shadow-2xl overflow-hidden border border-slate-600/50"
 			>
-				<div class="flex items-center gap-3">
-					<span>master*</span>
-					<span>&#x2297; 0 &#x26A0; 0</span>
-				</div>
-				<div class="flex items-center gap-3">
-					<span>Ln 14, Col 2</span>
-					<span>UTF-8</span>
-					<span>JSON</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- 背面：金屬質感設計 -->
-		<div
-			class="absolute inset-0 backface-hidden rotate-y-180 rounded-xl shadow-2xl overflow-hidden border border-slate-600/50"
-		>
-			<!-- 金屬漸層背景 -->
-			<div
-				class="absolute inset-0 bg-gradient-to-br from-slate-300 via-slate-100 to-slate-400"
-			></div>
-
-			<!-- 霧面/噪點疊加 -->
-			<div
-				class="absolute inset-0 opacity-50 mix-blend-multiply"
-				style="
-					filter: contrast(120%) brightness(100%);
-					background: radial-gradient(
-						circle at 50% 0,
-						rgba(255, 255, 255, 0.8),
-						transparent 70%
-					);
-				"
-			></div>
-
-			<!-- 幾何線條裝飾 -->
-			<div class="absolute inset-0">
+				<!-- 金屬漸層背景 -->
 				<div
-					class="absolute top-10 right-10 w-40 h-40 border-[1px] border-slate-400/30 rounded-full"
-				></div>
-				<div
-					class="absolute bottom-20 left-10 w-60 h-60 border-[1px] border-slate-800/10 rounded-full"
+					class="absolute inset-0 bg-gradient-to-br from-slate-300 via-slate-100 to-slate-400"
 				></div>
 
-				<!-- 對角線切割感 -->
+				<!-- 霧面/噪點疊加 -->
 				<div
-					class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/40 via-transparent to-transparent"
+					class="absolute inset-0 opacity-50 mix-blend-multiply"
+					style="
+						filter: contrast(120%) brightness(100%);
+						background: radial-gradient(
+							circle at 50% 0,
+							rgba(255, 255, 255, 0.8),
+							transparent 70%
+						);
+					"
 				></div>
 
-				<div
-					class="absolute inset-0 flex items-center justify-center opacity-10"
-				>
-					<!-- 很大的 LOGO 或圖形 -->
-					<svg
-						class="w-48 h-48 text-slate-800"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-					>
-						<path
-							d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"
-						/>
-					</svg>
-				</div>
-			</div>
-
-			<!-- 背面資訊 (簡約風格) -->
-			<div class="absolute bottom-8 left-8 right-8 text-slate-800">
-				<div
-					class="text-3xl font-black tracking-tighter uppercase opacity-80 mix-blend-color-burn"
-				>
-					{{ cardService.profile().name || "DEV MEMBER" }}
-				</div>
-				<div class="h-1 w-12 bg-slate-800 mt-2 mb-2"></div>
-				<div class="text-xs font-bold tracking-[0.2em] uppercase opacity-60">
-					{{ cardService.profile().title || "SYSTEM ARCHITECT" }}
-				</div>
-
-				<div class="mt-6 flex justify-between items-end opacity-70">
+				<!-- 幾何線條裝飾 -->
+				<div class="absolute inset-0">
 					<div
-						class="text-[10px] font-mono border border-slate-800 px-2 py-1 rounded-sm"
+						class="absolute top-10 right-10 w-40 h-40 border-[1px] border-slate-400/30 rounded-full"
+					></div>
+					<div
+						class="absolute bottom-20 left-10 w-60 h-60 border-[1px] border-slate-800/10 rounded-full"
+					></div>
+
+					<!-- 對角線切割感 -->
+					<div
+						class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/40 via-transparent to-transparent"
+					></div>
+
+					<div
+						class="absolute inset-0 flex items-center justify-center opacity-10"
 					>
-						ID: 8X-{{ (cardService.profile().name || "000").length * 123 }}
-					</div>
-					<!-- QR Code 模擬 -->
-					<div class="w-12 h-12 bg-slate-800 p-1">
-						<div
-							class="w-full h-full bg-white grid grid-cols-4 grid-rows-4 gap-px"
+						<!-- 很大的 LOGO 或圖形 -->
+						<svg
+							class="w-48 h-48 text-slate-800"
+							viewBox="0 0 24 24"
+							fill="currentColor"
 						>
-							<div class="bg-slate-800 col-span-2 row-span-2"></div>
-							<div class="bg-slate-800 col-start-4 row-start-1"></div>
-							<div class="bg-slate-800 col-start-1 row-start-4"></div>
-							<div class="bg-slate-800 col-start-3 row-start-3"></div>
+							<path
+								d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"
+							/>
+						</svg>
+					</div>
+				</div>
+
+				<!-- 背面資訊 (簡約風格) -->
+				<div class="absolute bottom-8 left-8 right-8 text-slate-800">
+					<div
+						class="text-3xl font-black tracking-tighter uppercase opacity-80 mix-blend-color-burn"
+					>
+						{{ cardService.profile().name || "DEV MEMBER" }}
+					</div>
+					<div class="h-1 w-12 bg-slate-800 mt-2 mb-2"></div>
+					<div class="text-xs font-bold tracking-[0.2em] uppercase opacity-60">
+						{{ cardService.profile().title || "SYSTEM ARCHITECT" }}
+					</div>
+
+					<div class="mt-6 flex justify-between items-end opacity-70">
+						<div
+							class="text-[10px] font-mono border border-slate-800 px-2 py-1 rounded-sm"
+						>
+							ID: 8X-{{ (cardService.profile().name || "000").length * 123 }}
+						</div>
+						<!-- QR Code 模擬 -->
+						<div class="w-12 h-12 bg-slate-800 p-1">
+							<div
+								class="w-full h-full bg-white grid grid-cols-4 grid-rows-4 gap-px"
+							>
+								<div class="bg-slate-800 col-span-2 row-span-2"></div>
+								<div class="bg-slate-800 col-start-4 row-start-1"></div>
+								<div class="bg-slate-800 col-start-1 row-start-4"></div>
+								<div class="bg-slate-800 col-start-3 row-start-3"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -230,4 +237,27 @@
 	>
 		Drag to Rotate • Double Click to Flip
 	</div>
+
+	<!-- Mobile: Edit FAB -->
+	<button
+		type="button"
+		(click)="cardService.setEditingMode(true)"
+		class="absolute bottom-6 right-6 lg:hidden w-14 h-14 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 z-50"
+		title="編輯名片"
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<path d="M12 20h9" />
+			<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+		</svg>
+	</button>
 </div>
