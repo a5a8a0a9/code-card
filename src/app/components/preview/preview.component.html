@@ -273,7 +273,7 @@
 			class="w-12 h-12 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95 text-xl border border-slate-700 shadow-md"
 			title="重置視角"
 		>
-			<fa-icon [icon]="faRotateRight"></fa-icon>
+			<i class="fa-solid fa-rotate-right"></i>
 		</button>
 
 		<!-- Auto Rotate -->
@@ -286,10 +286,10 @@
 		>
 			@if (cardService.isAutoRotating()) {
 			<!-- Pause -->
-			<fa-icon [icon]="faPause"></fa-icon>
+			<i class="fa-solid fa-pause"></i>
 			} @else {
 			<!-- Play -->
-			<fa-icon [icon]="faPlay" class="pl-1"></fa-icon>
+			<i class="fa-solid fa-play pl-1"></i>
 			}
 		</button>
 
@@ -300,7 +300,7 @@
 			class="w-12 h-12 bg-cyan-600 text-white hover:bg-cyan-500 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95 text-xl shadow-lg lg:hidden"
 			title="編輯名片"
 		>
-			<fa-icon [icon]="faPen"></fa-icon>
+			<i class="fa-solid fa-pen"></i>
 		</button>
 	</div>
 </div>
